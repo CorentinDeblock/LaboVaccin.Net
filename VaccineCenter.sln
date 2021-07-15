@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineCenter.DAL", "VaccineCenter\VaccineCenter.DAL.csproj", "{67B56644-2148-4271-86CA-9E80CA7B87B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinCenter.ASP", "VaccinCenter.ASP\VaccinCenter.ASP.csproj", "{379115F3-E045-48BE-82B8-3DB14F434E52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{379115F3-E045-48BE-82B8-3DB14F434E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379115F3-E045-48BE-82B8-3DB14F434E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379115F3-E045-48BE-82B8-3DB14F434E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379115F3-E045-48BE-82B8-3DB14F434E52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1ECCC31-F63C-436F-9D4F-2D350B24D27F}
+	EndGlobalSection
+EndGlobal
