@@ -1,0 +1,4 @@
+D:\source\repos\VaccineCenter\VaccineCenter.Service\obj\Debug\netcoreapp3.1\VaccineCenter.Services.csproj.AssemblyReference.cache
+D:\source\repos\VaccineCenter\VaccineCenter.Service\obj\Debug\netcoreapp3.1\VaccineCenter.Services.AssemblyInfoInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.Service\obj\Debug\netcoreapp3.1\VaccineCenter.Services.AssemblyInfo.cs
+D:\source\repos\VaccineCenter\VaccineCenter.Service\obj\Debug\netcoreapp3.1\VaccineCenter.Services.csproj.CoreCompileInputs.cache

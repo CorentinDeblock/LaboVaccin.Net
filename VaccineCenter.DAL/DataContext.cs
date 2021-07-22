@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VaccineCenter.DAL.Configuration;
-using VaccineCenter.Model;
+using VaccineCenter.DAL.Model;
 
 namespace VaccineCenter
 {
-    class DataContext : DbContext
+    public class DataContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,9 +20,12 @@ namespace VaccineCenter
             modelBuilder.ApplyConfiguration(new VaccinConfiguration());
             modelBuilder.ApplyConfiguration(new InActivityConfiguration());
             modelBuilder.ApplyConfiguration(new PlanificationConfiguration());
+            modelBuilder.ApplyConfiguration(new PatientConfiguration());
+            modelBuilder.ApplyConfiguration(new LogsConfiguration());
         }
-
+        public DbSet<Communication> Communications { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<AccountType> AccountTypes { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Planification> Planifications { get; set; }
         public DbSet<InjectionTaken> InjectionTakens { get; set; }

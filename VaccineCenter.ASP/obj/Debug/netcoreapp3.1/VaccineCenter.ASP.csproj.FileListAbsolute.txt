@@ -1,0 +1,7 @@
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.csproj.AssemblyReference.cache
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.AssemblyInfoInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.AssemblyInfo.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.csproj.CoreCompileInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.MvcApplicationPartsAssemblyInfo.cache
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.RazorAssemblyInfo.cache
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\netcoreapp3.1\VaccineCenter.ASP.RazorAssemblyInfo.cs

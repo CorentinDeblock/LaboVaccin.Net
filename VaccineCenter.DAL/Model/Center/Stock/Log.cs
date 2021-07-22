@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ServiceASP.Model;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using VaccineCenter.Enum;
+using VaccineCenter.DAL.Enum;
 
-namespace VaccineCenter.Model
+namespace VaccineCenter.DAL.Model
 {
-    public class Log
+    public class Log : IModel<int>
     {
         [Key]
         public int Id { get; set; }
@@ -17,8 +16,10 @@ namespace VaccineCenter.Model
 
         public int CenterId { get; set; }
         public int LotId { get; set; }
+        public int VaccinInfoId { get; set; }
 
         public Center Center { get; set; }
         public Lot Lot { get; set; }
+        public VaccinInfo VaccinInfo { get; set; }
     }
 }

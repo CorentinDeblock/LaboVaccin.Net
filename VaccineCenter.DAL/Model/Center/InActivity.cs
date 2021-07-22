@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ServiceASP.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace VaccineCenter.Model
+namespace VaccineCenter.DAL.Model
 {
-    public class InActivity
+    public class InActivity : IModel<int>
     {
         [Key]
         public int Id { get; set; }

@@ -1,0 +1,17 @@
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\VaccineCenter.Models.deps.json
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\VaccineCenter.Models.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\ref\VaccineCenter.Models.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\VaccineCenter.Models.pdb
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\ServiceASP.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\VaccineCenter.DAL.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\VaccineCenter.DAL.pdb
+D:\source\repos\VaccineCenter\VaccineCenter.Models\bin\Debug\net5.0\ServiceASP.pdb
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.csproj.AssemblyReference.cache
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.AssemblyInfoInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.AssemblyInfo.cs
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.csproj.CoreCompileInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.csproj.CopyComplete
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\ref\VaccineCenter.Models.dll
+D:\source\repos\VaccineCenter\VaccineCenter.Models\obj\Debug\net5.0\VaccineCenter.Models.pdb

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using VaccineCenter.Model;
+using VaccineCenter.DAL.Model;
 
 namespace VaccineCenter.DAL.Configuration
 {

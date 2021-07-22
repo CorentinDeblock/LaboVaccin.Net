@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineCenter.DAL", "VaccineCenter\VaccineCenter.DAL.csproj", "{67B56644-2148-4271-86CA-9E80CA7B87B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.DAL", "VaccineCenter.DAL\VaccineCenter.DAL.csproj", "{E7C51D5E-CF7D-4D5D-8023-8791B28CE832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinCenter.ASP", "VaccinCenter.ASP\VaccinCenter.ASP.csproj", "{379115F3-E045-48BE-82B8-3DB14F434E52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.ASP", "VaccineCenter.ASP\VaccineCenter.ASP.csproj", "{243B3033-D601-4E0A-A152-56D8B8697C95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.Services", "VaccineCenter.Service\VaccineCenter.Services.csproj", "{2EF307BB-C021-4B8F-80F8-1F3A56F6BE1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.Models", "VaccineCenter.Models\VaccineCenter.Models.csproj", "{3D4FA972-3932-48AC-9B5D-697555F3B23A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceASP", "..\ServiceASP\ServiceASP.csproj", "{1CDE6985-1867-49CD-9616-6D9282176A3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67B56644-2148-4271-86CA-9E80CA7B87B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{379115F3-E045-48BE-82B8-3DB14F434E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{379115F3-E045-48BE-82B8-3DB14F434E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{379115F3-E045-48BE-82B8-3DB14F434E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{379115F3-E045-48BE-82B8-3DB14F434E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7C51D5E-CF7D-4D5D-8023-8791B28CE832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C51D5E-CF7D-4D5D-8023-8791B28CE832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C51D5E-CF7D-4D5D-8023-8791B28CE832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C51D5E-CF7D-4D5D-8023-8791B28CE832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243B3033-D601-4E0A-A152-56D8B8697C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{243B3033-D601-4E0A-A152-56D8B8697C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243B3033-D601-4E0A-A152-56D8B8697C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{243B3033-D601-4E0A-A152-56D8B8697C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF307BB-C021-4B8F-80F8-1F3A56F6BE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF307BB-C021-4B8F-80F8-1F3A56F6BE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF307BB-C021-4B8F-80F8-1F3A56F6BE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF307BB-C021-4B8F-80F8-1F3A56F6BE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDE6985-1867-49CD-9616-6D9282176A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDE6985-1867-49CD-9616-6D9282176A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDE6985-1867-49CD-9616-6D9282176A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDE6985-1867-49CD-9616-6D9282176A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

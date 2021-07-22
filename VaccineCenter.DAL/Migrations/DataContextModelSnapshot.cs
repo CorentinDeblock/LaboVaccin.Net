@@ -19,14 +19,14 @@ namespace VaccineCenter.DAL.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("VaccineCenter.Model.Account", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Account", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccountType")
+                    b.Property<int>("AccountTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -38,13 +38,13 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MainAccountId")
-                        .HasColumnType("int");
-
                     b.Property<byte[]>("Password")
                         .HasColumnType("varbinary(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountTypeId")
+                        .IsUnique();
 
                     b.HasIndex("Email")
                         .IsUnique()
@@ -53,7 +53,25 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Center", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.AccountType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsPatient")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsStaff")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AccountTypes");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Center", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +100,28 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Centers");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.InActivity", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Communication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Email")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Phone")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Communications");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.InActivity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +142,7 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("InActivitties");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.InjectionTaken", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.InjectionTaken", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +164,7 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("InjectionTakens");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Log", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Log", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,16 +189,21 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<long>("Quantity")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("VaccinInfoId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CenterId");
 
                     b.HasIndex("LotId");
 
+                    b.HasIndex("VaccinInfoId");
+
                     b.ToTable("Logs");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Lot", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Lot", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,17 +213,17 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<long>("LotId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("ProviderId")
+                    b.Property<int>("VaccinId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProviderId");
+                    b.HasIndex("VaccinId");
 
                     b.ToTable("Lots");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Patient", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +236,7 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommunicationType")
+                    b.Property<int>("CommunicationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateTime")
@@ -208,10 +252,13 @@ namespace VaccineCenter.DAL.Migrations
 
                     b.HasIndex("AccountId");
 
+                    b.HasIndex("CommunicationId")
+                        .IsUnique();
+
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Planification", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Planification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -241,7 +288,7 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Planifications");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Provider", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Provider", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -254,17 +301,12 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VaccinId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("VaccinId");
 
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Schedule", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Schedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -290,7 +332,7 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Schedules");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Staff", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Staff", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,7 +360,31 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Staffs");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Vaccin", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Vaccin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProviderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.HasIndex("ProviderId");
+
+                    b.ToTable("Vaccins");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.VaccinInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -328,41 +394,22 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<int?>("CenterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("QuantityAvailable")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("VaccinId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CenterId");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
-
-                    b.ToTable("Vaccins");
-                });
-
-            modelBuilder.Entity("VaccineCenter.Model.VaccinInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("QuantityAvailable")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("VaccinId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
 
                     b.HasIndex("VaccinId");
 
                     b.ToTable("VaccinInfos");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Workspace", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Workspace", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -374,6 +421,9 @@ namespace VaccineCenter.DAL.Migrations
 
                     b.Property<int?>("CenterId")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("Code")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -390,15 +440,26 @@ namespace VaccineCenter.DAL.Migrations
                     b.ToTable("Workspaces");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Center", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Account", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.InActivity", "InActivity")
-                        .WithOne("Center")
-                        .HasForeignKey("VaccineCenter.Model.Center", "InActivityId")
+                    b.HasOne("VaccineCenter.DAL.Model.AccountType", "AccountType")
+                        .WithOne("Account")
+                        .HasForeignKey("VaccineCenter.DAL.Model.Account", "AccountTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.Model.Staff", "Responsible")
+                    b.Navigation("AccountType");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Center", b =>
+                {
+                    b.HasOne("VaccineCenter.DAL.Model.InActivity", "InActivity")
+                        .WithOne("Center")
+                        .HasForeignKey("VaccineCenter.DAL.Model.Center", "InActivityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VaccineCenter.DAL.Model.Staff", "Responsible")
                         .WithMany()
                         .HasForeignKey("ResponsibleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -409,13 +470,13 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Responsible");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.InjectionTaken", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.InjectionTaken", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Planification", "Planifications")
+                    b.HasOne("VaccineCenter.DAL.Model.Planification", "Planifications")
                         .WithMany()
                         .HasForeignKey("PlanificationsId");
 
-                    b.HasOne("VaccineCenter.Model.Staff", "Staff")
+                    b.HasOne("VaccineCenter.DAL.Model.Staff", "Staff")
                         .WithMany()
                         .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -426,62 +487,78 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Staff");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Log", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Log", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Center", "Center")
+                    b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
                         .WithMany("Log")
                         .HasForeignKey("CenterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.Model.Lot", "Lot")
+                    b.HasOne("VaccineCenter.DAL.Model.Lot", "Lot")
                         .WithMany()
                         .HasForeignKey("LotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("VaccineCenter.DAL.Model.VaccinInfo", "VaccinInfo")
+                        .WithMany("Logs")
+                        .HasForeignKey("VaccinInfoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Center");
 
                     b.Navigation("Lot");
+
+                    b.Navigation("VaccinInfo");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Lot", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Lot", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Provider", "Provider")
+                    b.HasOne("VaccineCenter.DAL.Model.Vaccin", "Vaccin")
                         .WithMany()
-                        .HasForeignKey("ProviderId")
+                        .HasForeignKey("VaccinId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Provider");
+                    b.Navigation("Vaccin");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Patient", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Patient", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Account", "Account")
+                    b.HasOne("VaccineCenter.DAL.Model.Account", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("VaccineCenter.DAL.Model.Communication", "Communication")
+                        .WithOne("Patient")
+                        .HasForeignKey("VaccineCenter.DAL.Model.Patient", "CommunicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Account");
+
+                    b.Navigation("Communication");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Planification", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Planification", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Center", "Center")
+                    b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
                         .WithMany("Planifications")
                         .HasForeignKey("CenterId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.Model.Patient", "Patient")
+                    b.HasOne("VaccineCenter.DAL.Model.Patient", "Patient")
                         .WithMany("Planification")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.Model.Vaccin", "Vaccin")
+                    b.HasOne("VaccineCenter.DAL.Model.Vaccin", "Vaccin")
                         .WithMany("Planifications")
                         .HasForeignKey("VaccinId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -494,9 +571,48 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Vaccin");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Provider", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Schedule", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Vaccin", "Vaccin")
+                    b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
+                        .WithMany("Schedule")
+                        .HasForeignKey("CenterId");
+
+                    b.Navigation("Center");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Staff", b =>
+                {
+                    b.HasOne("VaccineCenter.DAL.Model.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VaccineCenter.DAL.Model.Workspace", null)
+                        .WithMany("Staffs")
+                        .HasForeignKey("WorkspaceId");
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Vaccin", b =>
+                {
+                    b.HasOne("VaccineCenter.DAL.Model.Provider", "Provider")
+                        .WithMany()
+                        .HasForeignKey("ProviderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Provider");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.VaccinInfo", b =>
+                {
+                    b.HasOne("VaccineCenter.DAL.Model.Center", null)
+                        .WithMany("Vaccin")
+                        .HasForeignKey("CenterId");
+
+                    b.HasOne("VaccineCenter.DAL.Model.Vaccin", "Vaccin")
                         .WithMany()
                         .HasForeignKey("VaccinId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -505,53 +621,13 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Vaccin");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Schedule", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Workspace", b =>
                 {
-                    b.HasOne("VaccineCenter.Model.Center", "Center")
-                        .WithMany("Schedule")
-                        .HasForeignKey("CenterId");
-
-                    b.Navigation("Center");
-                });
-
-            modelBuilder.Entity("VaccineCenter.Model.Staff", b =>
-                {
-                    b.HasOne("VaccineCenter.Model.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VaccineCenter.Model.Workspace", null)
-                        .WithMany("Staffs")
-                        .HasForeignKey("WorkspaceId");
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("VaccineCenter.Model.Vaccin", b =>
-                {
-                    b.HasOne("VaccineCenter.Model.Center", null)
-                        .WithMany("Vaccin")
-                        .HasForeignKey("CenterId");
-                });
-
-            modelBuilder.Entity("VaccineCenter.Model.VaccinInfo", b =>
-                {
-                    b.HasOne("VaccineCenter.Model.Vaccin", "Vaccin")
-                        .WithMany()
-                        .HasForeignKey("VaccinId");
-
-                    b.Navigation("Vaccin");
-                });
-
-            modelBuilder.Entity("VaccineCenter.Model.Workspace", b =>
-                {
-                    b.HasOne("VaccineCenter.Model.Center", null)
+                    b.HasOne("VaccineCenter.DAL.Model.Center", null)
                         .WithMany("Workspace")
                         .HasForeignKey("CenterId");
 
-                    b.HasOne("VaccineCenter.Model.Staff", "Responsible")
+                    b.HasOne("VaccineCenter.DAL.Model.Staff", "Responsible")
                         .WithMany()
                         .HasForeignKey("ResponsibleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -560,7 +636,12 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Responsible");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Center", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.AccountType", b =>
+                {
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Center", b =>
                 {
                     b.Navigation("Log");
 
@@ -573,22 +654,32 @@ namespace VaccineCenter.DAL.Migrations
                     b.Navigation("Workspace");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.InActivity", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Communication", b =>
+                {
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.InActivity", b =>
                 {
                     b.Navigation("Center");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Patient", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Patient", b =>
                 {
                     b.Navigation("Planification");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Vaccin", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Vaccin", b =>
                 {
                     b.Navigation("Planifications");
                 });
 
-            modelBuilder.Entity("VaccineCenter.Model.Workspace", b =>
+            modelBuilder.Entity("VaccineCenter.DAL.Model.VaccinInfo", b =>
+                {
+                    b.Navigation("Logs");
+                });
+
+            modelBuilder.Entity("VaccineCenter.DAL.Model.Workspace", b =>
                 {
                     b.Navigation("Staffs");
                 });

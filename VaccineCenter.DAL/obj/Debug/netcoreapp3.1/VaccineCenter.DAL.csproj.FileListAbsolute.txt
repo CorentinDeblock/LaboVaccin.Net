@@ -10,3 +10,7 @@ D:\source\repos\VaccineCenter\VaccineCenter\obj\Debug\netcoreapp3.1\VaccineCente
 D:\source\repos\VaccineCenter\VaccineCenter\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.dll
 D:\source\repos\VaccineCenter\VaccineCenter\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.pdb
 D:\source\repos\VaccineCenter\VaccineCenter\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.genruntimeconfig.cache
+D:\source\repos\VaccineCenter\VaccineCenter.DAL\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.csproj.AssemblyReference.cache
+D:\source\repos\VaccineCenter\VaccineCenter.DAL\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.AssemblyInfoInputs.cache
+D:\source\repos\VaccineCenter\VaccineCenter.DAL\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.AssemblyInfo.cs
+D:\source\repos\VaccineCenter\VaccineCenter.DAL\obj\Debug\netcoreapp3.1\VaccineCenter.DAL.csproj.CoreCompileInputs.cache

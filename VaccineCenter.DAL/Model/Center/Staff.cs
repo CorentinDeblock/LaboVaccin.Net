@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ServiceASP.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using VaccineCenter.Enum;
+using VaccineCenter.DAL.Enum;
 
-namespace VaccineCenter.Model
+namespace VaccineCenter.DAL.Model
 {
-    public class Staff
+    public class Staff : IModel<int>
     {
         [Key]
         public int Id { get; set; }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using VaccineCenter.Model;
+using VaccineCenter.DAL.Model;
 
 namespace VaccineCenter.DAL.Configuration
 {
@@ -14,6 +14,11 @@ namespace VaccineCenter.DAL.Configuration
             builder
                 .HasIndex(a => a.Email)
                 .IsUnique();
+
+            builder
+                .HasOne(a => a.AccountType)
+                .WithOne(a => a.Account)
+                .HasForeignKey<Account>(a => a.AccountTypeId);
         }
     }
 }
