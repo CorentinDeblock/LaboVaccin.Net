@@ -9,7 +9,6 @@ namespace VaccineCenter.Services.Mapper
 {
     public class AccountMapper : IMapper<Account, AccountModel, AccountForm>
     {
-
         public AccountModel MapEntityToModel(Account entity)
         {
             return new AccountModel
@@ -20,6 +19,18 @@ namespace VaccineCenter.Services.Mapper
                 LastName = entity.LastName,
                 Password = entity.Password,
                 AccountTypeId = entity.AccountTypeId
+            };
+        }
+
+        public AccountForm MapModelToForm(AccountModel model)
+        {
+            return new AccountForm
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Password = "",
+                AccountTypeId = model.AccountTypeId
             };
         }
 
@@ -35,15 +46,17 @@ namespace VaccineCenter.Services.Mapper
             };
         }
 
-        public AccountForm MapModelToForm(AccountModel model)
+        public Account MapModelToEntity(AccountModel model)
         {
-            return new AccountForm
+            return new Account
             {
+                Id = model.Id,
+                Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                Email = model.Email,
-                Password = "",
-                AccountTypeId = model.AccountTypeId
+                Password = model.Password,
+                AccountTypeId = model.AccountTypeId,
+                AccountType = new AccountTypeMapper().MapModelToEntity(model.AccountType),
             };
         }
 

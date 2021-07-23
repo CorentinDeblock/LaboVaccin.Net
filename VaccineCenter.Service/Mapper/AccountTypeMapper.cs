@@ -26,6 +26,15 @@ namespace VaccineCenter.Services.Mapper
             };
         }
 
+        public AccountType MapModelToEntity(AccountTypeModel model)
+        {
+            return new AccountType
+            {
+                IsPatient = model.IsPatient,
+                IsStaff = model.IsStaff
+            };
+        }
+
         public AccountTypeForm MapModelToForm(AccountTypeModel model)
         {
             throw new System.NotImplementedException();

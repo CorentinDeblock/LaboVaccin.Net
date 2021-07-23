@@ -11,16 +11,16 @@ namespace VaccineCenter.Services
 {
     public class AccountService : BaseServices<DataContext,Account, AccountModel, AccountForm, int>
     {
-        private AccountTypeMapper AccountTypeMaper;
+        private AccountTypeMapper AccountTypeMapper;
         public AccountService(DataContext dc) : base(dc,new AccountMapper()) 
         {
-            AccountTypeMaper = new AccountTypeMapper();
+            AccountTypeMapper = new AccountTypeMapper();
         }
 
         protected override AccountModel MapEntityToModel(Account target,CRUDAction action)
         {
             AccountModel account = base.MapEntityToModel(target);
-            account.AccountType = AccountTypeMaper.MapEntityToModel(target.AccountType);
+            account.AccountType = AccountTypeMapper.MapEntityToModel(target.AccountType);
             return account;
         }
 

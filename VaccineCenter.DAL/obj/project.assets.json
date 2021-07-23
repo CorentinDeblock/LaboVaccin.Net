@@ -5754,8 +5754,8 @@
     },
     "ServiceASP/1.0.0": {
       "type": "project",
-      "path": "../../ServiceASP/ServiceASP.csproj",
-      "msbuildProject": "../../ServiceASP/ServiceASP.csproj"
+      "path": "../../ServiceASP.Net/ServiceASP.csproj",
+      "msbuildProject": "../../ServiceASP.Net/ServiceASP.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5767,27 +5767,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Niktam air\\.nuget\\packages\\": {},
+    "C:\\Users\\c.deblock\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\repos\\VaccineCenter\\VaccineCenter.DAL\\VaccineCenter.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\c.deblock\\Source\\Repos\\LaboVaccin.Net\\VaccineCenter.DAL\\VaccineCenter.DAL.csproj",
       "projectName": "VaccineCenter.DAL",
-      "projectPath": "D:\\source\\repos\\VaccineCenter\\VaccineCenter.DAL\\VaccineCenter.DAL.csproj",
-      "packagesPath": "C:\\Users\\Niktam air\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\repos\\VaccineCenter\\VaccineCenter.DAL\\obj\\",
+      "projectPath": "C:\\Users\\c.deblock\\Source\\Repos\\LaboVaccin.Net\\VaccineCenter.DAL\\VaccineCenter.DAL.csproj",
+      "packagesPath": "C:\\Users\\c.deblock\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\c.deblock\\Source\\Repos\\LaboVaccin.Net\\VaccineCenter.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Niktam air\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\c.deblock\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -5800,8 +5801,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\source\\repos\\ServiceASP\\ServiceASP.csproj": {
-              "projectPath": "D:\\source\\repos\\ServiceASP\\ServiceASP.csproj"
+            "C:\\Users\\c.deblock\\Source\\Repos\\ServiceASP.Net\\ServiceASP.csproj": {
+              "projectPath": "C:\\Users\\c.deblock\\Source\\Repos\\ServiceASP.Net\\ServiceASP.csproj"
             }
           }
         }
@@ -5846,7 +5847,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

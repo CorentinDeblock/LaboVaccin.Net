@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ServiceASP\ServiceASP.csproj" />
     <ProjectReference Include="..\VaccineCenter.DAL\VaccineCenter.DAL.csproj" />
     <ProjectReference Include="..\VaccineCenter.Models\VaccineCenter.Models.csproj" />
   </ItemGroup>

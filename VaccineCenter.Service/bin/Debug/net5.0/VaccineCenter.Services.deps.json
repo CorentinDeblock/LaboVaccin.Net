@@ -9,7 +9,6 @@
       "VaccineCenter.Services/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.8",
-          "ServiceASP": "1.0.0",
           "VaccineCenter.DAL": "1.0.0",
           "VaccineCenter.Models": "1.0.0"
         },

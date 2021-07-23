@@ -33,14 +33,21 @@ namespace VaccineCenter.ASP.Controllers
         {
             if(ModelState.IsValid)
             {
-                AccountTypeModel model = AccountTypeServices.Insert(new AccountTypeForm
+                if(AccountServices.Has(accountForm))
                 {
-                    isStaff = true,
-                    isPatient = false
-                });
+                    AccountServices.Get(accountForm).AccountType.IsStaff = true;
+                    AccountServices.Save();
+                }else
+                {
+                    AccountTypeModel model = AccountTypeServices.Insert(new AccountTypeForm
+                    {
+                        isStaff = true,
+                        isPatient = false
+                    });
 
-                accountForm.AccountTypeId = model.Id;
-                AccountServices.Insert(accountForm);
+                    accountForm.AccountTypeId = model.Id;
+                    AccountServices.Insert(accountForm);
+                }
 
                 return RedirectToAction("Index");
             }

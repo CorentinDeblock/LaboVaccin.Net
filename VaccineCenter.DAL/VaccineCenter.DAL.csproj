@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ServiceASP\ServiceASP.csproj" />
+    <ProjectReference Include="..\..\ServiceASP.Net\ServiceASP.csproj" />
   </ItemGroup>
 
 </Project>

@@ -30,9 +30,25 @@ namespace VaccineCenter.Services.Mapper
             };
         }
 
+        public Staff MapModelToEntity(StaffModel model)
+        {
+            return new Staff
+            {
+                Id = model.Id,
+                Grade = model.Grade,
+                INAMI = model.INAMI,
+                AccountId = model.AccountId,
+                Account = new AccountMapper().MapModelToEntity(model.Account)
+            };
+        }
+
         public StaffForm MapModelToForm(StaffModel model)
         {
-            throw new System.NotImplementedException();
+            return new StaffForm
+            {
+                Grade = model.Grade,
+                INAMI = model.INAMI
+            };
         }
     }
 }
