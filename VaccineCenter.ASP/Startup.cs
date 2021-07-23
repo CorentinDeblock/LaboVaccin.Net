@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ServiceASP.Bases;
+using ServiceASP.template;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,16 @@ namespace VaccineCenter.ASP
             services.AddControllersWithViews();
 
             services.AddScoped<DataContext>();
-            services.AddScoped<IServices<AccountModel,AccountForm, int>,AccountService>();
-            services.AddScoped<IServices<AccountTypeModel, AccountTypeForm, int>, AccountTypeService>();
+
+            services.AddSession((c) =>
+            {
+                c.Cookie.MaxAge = new TimeSpan(1000 * 60);
+                c.Cookie.Name = "VaccineCenter";
+            });
+
+            services.AddScoped<IIntService<AccountModel,AccountForm>, AccountService>();
+            services.AddScoped<IIntService<AccountTypeModel, AccountTypeForm>, AccountTypeService>();
+            services.AddScoped<IIntService<StaffModel, StaffForm>, StaffService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +58,7 @@ namespace VaccineCenter.ASP
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

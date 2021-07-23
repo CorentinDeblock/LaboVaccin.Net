@@ -49,13 +49,20 @@ using VaccineCenter.Services.Mapper;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\c.deblock\Source\Repos\LaboVaccin.Net\VaccineCenter.ASP\Views\_ViewImports.cshtml"
+using VaccineCenter.ASP.Controllers.Emcriptor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\c.deblock\Source\Repos\LaboVaccin.Net\VaccineCenter.ASP\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99464617055fdb505bb0bb7fd91f9b14f7b0d030", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"58307e6b993c26c7a5d5879f78fcf3f4d2002dc7", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"711e83ad758b53e026a504c44666dde97a3787d4", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -1,22 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ServiceASP.Bases;
-using System.Collections.Generic;
+using ServiceASP.template;
 using VaccineCenter.Models;
 using VaccineCenter.Models.Form;
+using Microsoft.AspNetCore;
+using VaccineCenter.ASP.Controllers.Emcriptor;
 
 namespace VaccineCenter.ASP.Controllers
 {
     public class AccountController : Controller
     {
-        IServices<AccountModel, AccountForm, int> AccountServices;
-        IServices<AccountTypeModel, AccountTypeForm, int> AccountTypeServices;
+        IIntService<AccountModel, AccountForm> AccountServices;
+        IIntService<AccountTypeModel, AccountTypeForm> AccountTypeServices;
+        IIntService<StaffModel, StaffForm> StaffServices;
         public AccountController(
-            IServices<AccountModel, AccountForm, int> accountServices,
-            IServices<AccountTypeModel, AccountTypeForm, int> accountTypeServices
+            IIntService<AccountModel, AccountForm> accountServices,
+            IIntService<AccountTypeModel, AccountTypeForm> accountTypeServices,
+            IIntService<StaffModel, StaffForm> staffServices
         )
         {
             AccountServices = accountServices;
             AccountTypeServices = accountTypeServices;
+            StaffServices = staffServices;
         }
         public IActionResult Index()
         {
@@ -33,9 +37,12 @@ namespace VaccineCenter.ASP.Controllers
         {
             if(ModelState.IsValid)
             {
+                AccountModel acc;
+
                 if(AccountServices.Has(accountForm))
                 {
-                    AccountServices.Get(accountForm).AccountType.IsStaff = true;
+                    acc = AccountServices.Get(accountForm);
+                    acc.AccountType.IsStaff = true;
                     AccountServices.Save();
                 }else
                 {
@@ -46,12 +53,16 @@ namespace VaccineCenter.ASP.Controllers
                     });
 
                     accountForm.AccountTypeId = model.Id;
-                    AccountServices.Insert(accountForm);
+                    acc = AccountServices.Insert(accountForm);
                 }
+
+                accountForm.AccountId = acc.Id;
+                acc.Staff = StaffServices.Insert(accountForm);
+                HttpContext.Session.EncryptAccount(acc);
 
                 return RedirectToAction("Index");
             }
-            ViewData["Error"] = "Error on form";
+            ViewData["Error"] = "Error on the server. Please contact us on tikiwinki@gmail.com";
             return View();
         }
 
@@ -69,6 +80,12 @@ namespace VaccineCenter.ASP.Controllers
                 return RedirectToAction("Index");
             }
             return View(form);
+        }
+
+        [HttpGet]
+        public IActionResult Details([FromRoute] int id)
+        {
+            return View(AccountServices.Get(id));
         }
 
         public IActionResult Delete(AccountModel model)

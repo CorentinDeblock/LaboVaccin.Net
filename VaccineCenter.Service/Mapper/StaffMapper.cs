@@ -26,7 +26,8 @@ namespace VaccineCenter.Services.Mapper
             return new Staff
             {
                 Grade = form.Grade,
-                INAMI = form.INAMI
+                INAMI = form.INAMI,
+                AccountId = form.AccountId
             };
         }
 
@@ -47,7 +48,8 @@ namespace VaccineCenter.Services.Mapper
             return new StaffForm
             {
                 Grade = model.Grade,
-                INAMI = model.INAMI
+                INAMI = model.INAMI,
+                AccountId = model.AccountId
             };
         }
     }

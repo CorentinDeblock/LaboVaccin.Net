@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ServiceASP.Bases;
+using ServiceASP.template;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ using VaccineCenter.Services.Mapper;
 
 namespace VaccineCenter.Services
 {
-    class StaffService : BaseServices<DataContext,Staff, StaffModel, StaffForm, int>
+    public class StaffService : IntServices<DataContext, Staff, StaffModel, StaffForm>
     {
         public StaffService(DataContext dc) : base(dc, new StaffMapper())
         {

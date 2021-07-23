@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form id="form" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -32,10 +32,17 @@
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            @if (ViewData["Error"] != null)
-            {
-                <p>There is an error</p>
-            }
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <select id="Grade" asp-for="Grade" asp-items="@Html.GetEnumSelectList<StaffGrade>()">
+                </select>
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="INAMI">
+                <label asp-for="INAMI" class="control-label"></label>
+                <input asp-for="INAMI" id="INAMIInput" class="form-control" />
+                <span asp-validation-for="INAMI" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -46,6 +53,23 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    const INAMIDisplay = document.getElementById("INAMI")
+    const INAMIInput = document.getElementById("INAMIInput")
+
+    document.getElementById("Grade").onchange = function() {
+        if (this.value == 1 || this.value == 0)
+            INAMIDisplay.removeAttribute("hidden","false")
+        else
+            INAMIDisplay.setAttribute("hidden","true")
+    }
+
+    document.getElementById("form").onsubmit = () => {
+        if (INAMIDisplay.getAttribute("hidden") == "true")
+            INAMIInput.value = ""
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

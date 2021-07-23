@@ -49,13 +49,20 @@ using VaccineCenter.Services.Mapper;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\c.deblock\Source\Repos\LaboVaccin.Net\VaccineCenter.ASP\Views\_ViewImports.cshtml"
+using VaccineCenter.ASP.Controllers.Emcriptor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\c.deblock\Source\Repos\LaboVaccin.Net\VaccineCenter.ASP\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"419e412675f4cbd3676e89d4653d6fb819520592", @"/Views/Account/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"58307e6b993c26c7a5d5879f78fcf3f4d2002dc7", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"711e83ad758b53e026a504c44666dde97a3787d4", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<VaccineCenter.Models.AccountModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -192,9 +199,9 @@ using Microsoft.AspNetCore.Http;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n    \r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "419e412675f4cbd3676e89d4653d6fb8195205929281", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "419e412675f4cbd3676e89d4653d6fb8195205929500", async() => {
                 WriteLiteral("\r\n        <input type=\"submit\" value=\"Delete\" class=\"btn btn-danger\" /> |\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "419e412675f4cbd3676e89d4653d6fb8195205929628", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "419e412675f4cbd3676e89d4653d6fb8195205929847", async() => {
                     WriteLiteral("Back to List");
                 }
                 );

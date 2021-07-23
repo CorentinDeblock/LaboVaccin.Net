@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ServiceASP.Bases;
+using ServiceASP.template;
 using VaccineCenter.DAL.Model;
 using VaccineCenter.Models;
 using VaccineCenter.Models.Form;
@@ -7,7 +8,7 @@ using VaccineCenter.Services.Mapper;
 
 namespace VaccineCenter.Services
 {
-    public class AccountTypeService : BaseServices<DataContext,AccountType, AccountTypeModel, AccountTypeForm, int>
+    public class AccountTypeService : IntServices<DataContext, AccountType, AccountTypeModel, AccountTypeForm>
     {
         private AccountMapper AccountMapper;
         public AccountTypeService(DataContext dc) : base(dc,new AccountTypeMapper())

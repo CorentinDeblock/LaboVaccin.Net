@@ -1,15 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Configuration;
+using System.IO;
 using VaccineCenter.DAL.Configuration;
 using VaccineCenter.DAL.Model;
 
 namespace VaccineCenter
 {
+    internal class JSONDbConfig
+    {
+        public string SQL { get; }
+    }
+    internal class JSONConfig
+    {
+        public JSONDbConfig ConnectionStrings { get; }
+    }
+
     public class DataContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-C1EJAU3;Database = LaboVaccin;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

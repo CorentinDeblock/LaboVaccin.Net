@@ -51,7 +51,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Update", new { id = item.Id }, converter.MapModelToForm(item)) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", item)
             </td>
         </tr>

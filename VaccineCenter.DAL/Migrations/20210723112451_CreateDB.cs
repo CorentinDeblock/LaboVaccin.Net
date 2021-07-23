@@ -165,7 +165,7 @@ namespace VaccineCenter.DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Grade = table.Column<int>(type: "int", nullable: false),
-                    INAMI = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    INAMI = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountId = table.Column<int>(type: "int", nullable: false),
                     WorkspaceId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -296,7 +296,6 @@ namespace VaccineCenter.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Code = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     ResponsibleId = table.Column<int>(type: "int", nullable: false),
                     CenterId = table.Column<int>(type: "int", nullable: true)
                 },

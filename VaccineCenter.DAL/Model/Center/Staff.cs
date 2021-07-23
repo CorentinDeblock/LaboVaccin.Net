@@ -12,7 +12,7 @@ namespace VaccineCenter.DAL.Model
         [Key]
         public int Id { get; set; }
         public StaffGrade Grade { get; set; }
-        public byte[] INAMI { get; set; }
+        public string INAMI { get; set; }
 
         public int AccountId { get; set; }
 

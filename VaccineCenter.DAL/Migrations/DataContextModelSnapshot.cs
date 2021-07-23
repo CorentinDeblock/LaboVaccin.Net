@@ -16,7 +16,7 @@ namespace VaccineCenter.DAL.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Account", b =>
@@ -345,8 +345,8 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<int>("Grade")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("INAMI")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("INAMI")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("WorkspaceId")
                         .HasColumnType("int");
@@ -421,9 +421,6 @@ namespace VaccineCenter.DAL.Migrations
 
                     b.Property<int?>("CenterId")
                         .HasColumnType("int");
-
-                    b.Property<byte[]>("Code")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

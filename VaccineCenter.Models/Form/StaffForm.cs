@@ -8,7 +8,7 @@ namespace VaccineCenter.Models.Form
     public class StaffForm
     {
         public StaffGrade Grade { get; set; }
-        public byte[] INAMI { get; set; }
-        public string Code { get; set; }
+        public string INAMI { get; set; }
+        public int AccountId { get; set; }
     }
 }
