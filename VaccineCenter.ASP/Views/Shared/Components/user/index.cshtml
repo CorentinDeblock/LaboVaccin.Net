@@ -2,5 +2,27 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    bool haveAccount = Context.Session.HasAccount();
 }
-<p>Hello world</p>
+
+@if (haveAccount)
+{
+    AccountModel acc = Context.Session.DecrypAccount();
+
+    <div>
+        <p>@acc.Email</p>
+        @if (acc.AccountType.IsStaff)
+        {
+            <p>Staff</p>
+        }
+
+        @if (acc.AccountType.IsPatient)
+        {
+            <a href="http://localhost:5000">Go to patient account</a>
+        }
+    </div>
+}
+else
+{
+    <a href="Account/Login">Connect</a>
+}

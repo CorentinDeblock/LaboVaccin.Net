@@ -10,7 +10,7 @@ namespace VaccineCenter.ASP.Controllers.Emcriptor
 
         public static void EncryptAccount(this ISession Session, AccountModel model)
         {
-            Session.Set(fieldName, System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(model)));
+            Session.SetString(fieldName, JsonConvert.SerializeObject(model));
         }
 
         public static AccountModel DecrypAccount(this ISession Session)

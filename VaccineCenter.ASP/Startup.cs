@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using ServiceASP.Bases;
 using ServiceASP.template;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using VaccineCenter.DAL.Model;
 using VaccineCenter.Models;
 using VaccineCenter.Models.Form;
 using VaccineCenter.Services;
@@ -31,15 +30,17 @@ namespace VaccineCenter.ASP
 
             services.AddScoped<DataContext>();
 
-            services.AddSession((c) =>
+            services.AddSession((session) =>
             {
-                c.Cookie.MaxAge = new TimeSpan(1000 * 60);
-                c.Cookie.Name = "VaccineCenter";
+                session.IdleTimeout = TimeSpan.FromMinutes(10);
+                session.Cookie.MaxAge = TimeSpan.FromDays(3);
+                session.Cookie.Name = "VaccineCenter";
+                session.Cookie.HttpOnly = true;
             });
 
-            services.AddScoped<IIntService<AccountModel,AccountForm>, AccountService>();
-            services.AddScoped<IIntService<AccountTypeModel, AccountTypeForm>, AccountTypeService>();
-            services.AddScoped<IIntService<StaffModel, StaffForm>, StaffService>();
+            services.AddScoped<IIntService<Account,AccountModel,AccountForm>, AccountService>();
+            services.AddScoped<IIntService<AccountType,AccountTypeModel, AccountTypeForm>, AccountTypeService>();
+            services.AddScoped<IIntService<Staff,StaffModel, StaffForm>, StaffService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,24 +4,26 @@ using VaccineCenter.Models;
 using VaccineCenter.Models.Form;
 using Microsoft.AspNetCore;
 using VaccineCenter.ASP.Controllers.Emcriptor;
+using VaccineCenter.DAL.Model;
+using System.Text;
+using System.Security.Cryptography;
+using System.Linq;
 
 namespace VaccineCenter.ASP.Controllers
 {
     public class AccountController : Controller
     {
-        IIntService<AccountModel, AccountForm> AccountServices;
-        IIntService<AccountTypeModel, AccountTypeForm> AccountTypeServices;
-        IIntService<StaffModel, StaffForm> StaffServices;
-        public AccountController(
-            IIntService<AccountModel, AccountForm> accountServices,
-            IIntService<AccountTypeModel, AccountTypeForm> accountTypeServices,
-            IIntService<StaffModel, StaffForm> staffServices
-        )
+        IIntService<Account, AccountModel, AccountForm> AccountServices;
+        IIntService<AccountType, AccountTypeModel, AccountTypeForm> AccountTypeServices;
+        IIntService<Staff, StaffModel, StaffForm> StaffServices;
+
+        public AccountController(IIntService<Account, AccountModel, AccountForm> accountServices, IIntService<AccountType, AccountTypeModel, AccountTypeForm> accountTypeServices, IIntService<Staff, StaffModel, StaffForm> staffServices)
         {
             AccountServices = accountServices;
             AccountTypeServices = accountTypeServices;
             StaffServices = staffServices;
         }
+
         public IActionResult Index()
         {
             return View(AccountServices.Get());
@@ -91,6 +93,33 @@ namespace VaccineCenter.ASP.Controllers
         public IActionResult Delete(AccountModel model)
         {
             return View(model);
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginForm form)
+        {
+            if(ModelState.IsValid)
+            {
+                using (SHA256 enc = SHA256.Create())
+                {
+                    byte[] password = enc.ComputeHash(Encoding.UTF8.GetBytes(form.Password));
+                    AccountModel acc = AccountServices.GetFromFunc(a => a.Email == form.Email && a.Password.SequenceEqual(password));
+
+                    if(acc != null)
+                    {
+                        HttpContext.Session.EncryptAccount(acc);
+                        return Redirect("/");
+                    }
+                }
+            }
+
+            ViewData["Error"] = "Error on password or email";
+            return View();
         }
 
         [HttpPost]

@@ -10,7 +10,7 @@ using VaccineCenter;
 namespace VaccineCenter.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210723112451_CreateDB")]
+    [Migration("20210725220612_CreateDB")]
     partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

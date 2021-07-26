@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.Services", "V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineCenter.Models", "VaccineCenter.Models\VaccineCenter.Models.csproj", "{3D4FA972-3932-48AC-9B5D-697555F3B23A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceASP", "..\ServiceASP.Net\ServiceASP.csproj", "{01724F51-6A9E-47D0-8F92-08BCFE6B3469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceASP", "..\ServiceASP.Net\ServiceASP.csproj", "{D4200C89-F6D3-4BC0-AD5B-6C0C62CEE1F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4FA972-3932-48AC-9B5D-697555F3B23A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01724F51-6A9E-47D0-8F92-08BCFE6B3469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01724F51-6A9E-47D0-8F92-08BCFE6B3469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01724F51-6A9E-47D0-8F92-08BCFE6B3469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01724F51-6A9E-47D0-8F92-08BCFE6B3469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4200C89-F6D3-4BC0-AD5B-6C0C62CEE1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4200C89-F6D3-4BC0-AD5B-6C0C62CEE1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4200C89-F6D3-4BC0-AD5B-6C0C62CEE1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4200C89-F6D3-4BC0-AD5B-6C0C62CEE1F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
