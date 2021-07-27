@@ -1,4 +1,5 @@
 ﻿using ServiceASP.Bases;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using VaccineCenter.DAL.Model;
@@ -55,8 +56,7 @@ namespace VaccineCenter.Services.Mapper
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Password = model.Password,
-                AccountTypeId = model.AccountTypeId,
-                AccountType = new AccountTypeMapper().MapModelToEntity(model.AccountType),
+                AccountTypeId = model.AccountTypeId
             };
         }
 

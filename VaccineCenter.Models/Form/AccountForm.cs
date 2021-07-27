@@ -3,7 +3,7 @@ using VaccineCenter.DAL.Enum;
 
 namespace VaccineCenter.Models.Form
 {
-    public class AccountForm : StaffForm
+    public class AccountForm
     {
         [Required()]
         public string Email { get; set; }

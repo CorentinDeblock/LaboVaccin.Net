@@ -13,6 +13,7 @@ namespace VaccineCenter.DAL.Model
         public string Name { get; set; }
         public DateTime OpenAt { get; set; }
         public DateTime CloseAt { get; set; }
+        public int CenterId { get; set; }
         public Center Center { get; set; }
     }
 }

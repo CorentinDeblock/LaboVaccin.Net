@@ -13,9 +13,9 @@ namespace VaccineCenter.DAL.Model
         public string Name { get; set; }
         public string Address { get; set; }
 
-        public int ResponsibleId { get; set; }
+        public int CenterId { get; set; }
 
-        public Staff Responsible { get; set; }
         public List<Staff> Staffs { get; set; }
+        public Center Center { get; set; }
     }
 }

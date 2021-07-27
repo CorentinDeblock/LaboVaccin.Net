@@ -11,7 +11,5 @@
         public int AccountTypeId { get; set; }
 
         public AccountTypeModel AccountType { get; set; }
-        public StaffModel Staff { get; set; }
-
     }
 }

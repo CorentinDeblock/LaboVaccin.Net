@@ -13,8 +13,6 @@ namespace VaccineCenter.DAL.Model
         public DateTime Opening { get; set; }
         public DateTime Closing { get; set; }
 
-        public int CenterId { get; set; }
-
         public Center Center { get; set; }
     }
 }

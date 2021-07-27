@@ -4,25 +4,19 @@
 @{
     bool haveAccount = Context.Session.HasAccount();
 }
+<div class="float-right">
+    @if (haveAccount)
+    {
+        StaffModel staffAcc = Context.Session.DecryptStaff();
 
-@if (haveAccount)
-{
-    AccountModel acc = Context.Session.DecrypAccount();
-
-    <div>
-        <p>@acc.Email</p>
-        @if (acc.AccountType.IsStaff)
-        {
-            <p>Staff</p>
-        }
-
-        @if (acc.AccountType.IsPatient)
-        {
-            <a href="http://localhost:5000">Go to patient account</a>
-        }
-    </div>
-}
-else
-{
-    <a href="Account/Login">Connect</a>
-}
+        <div class="account-tab">
+            <h6 class="title">@Html.ActionLink(staffAcc.Account.Email,"MyAccount","Staff")</h6>
+            <p class="m-0">@staffAcc.Grade</p>
+        </div>
+    }
+    else
+    {
+        @Html.ActionLink("Sign in", "Create", "Staff", new { }, new {@class = "btn btn-outline-info mr-2" });
+        @Html.ActionLink("Log in", "Login", "Staff", new { }, new { @class = "btn btn-info" });
+    }
+</div>

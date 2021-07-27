@@ -51,6 +51,17 @@ namespace VaccineCenter.DAL.Migrations
                         .HasFilter("[Email] IS NOT NULL");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccountTypeId = 1,
+                            Email = "roger@gmail.com",
+                            FirstName = "Roger",
+                            LastName = "LaMontagne",
+                            Password = new byte[] { 67, 135, 19, 71, 132, 207, 58, 164, 36, 91, 127, 207, 74, 192, 69, 208, 164, 73, 82, 78, 152, 186, 93, 171, 73, 85, 255, 70, 49, 232, 157, 249 }
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.AccountType", b =>
@@ -69,6 +80,14 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AccountTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsPatient = false,
+                            IsStaff = true
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Center", b =>
@@ -87,17 +106,21 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResponsibleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("InActivityId")
                         .IsUnique();
 
-                    b.HasIndex("ResponsibleId");
-
                     b.ToTable("Centers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Rue des flocons, 6, 6200, Chaleroi",
+                            InActivityId = 1,
+                            Name = "Vaccine toi"
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Communication", b =>
@@ -109,9 +132,6 @@ namespace VaccineCenter.DAL.Migrations
 
                     b.Property<bool>("Email")
                         .HasColumnType("bit");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Phone")
                         .HasColumnType("bit");
@@ -128,9 +148,6 @@ namespace VaccineCenter.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CenterId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Closing")
                         .HasColumnType("datetime2");
 
@@ -140,6 +157,14 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InActivitties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Closing = new DateTime(2022, 7, 27, 15, 41, 16, 190, DateTimeKind.Local).AddTicks(3886),
+                            Opening = new DateTime(2021, 7, 27, 15, 41, 16, 190, DateTimeKind.Local).AddTicks(3489)
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.InjectionTaken", b =>
@@ -236,17 +261,17 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CommunicationId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("MedicationIndications")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("NationalRegistrationNumber")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("NationalRegistrationNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -304,6 +329,20 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Providers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Rue de la montagne, 6",
+                            Name = "Biontech"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Rue de saint pagne, 89",
+                            Name = "Johnson & Johnson"
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Schedule", b =>
@@ -313,7 +352,7 @@ namespace VaccineCenter.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CenterId")
+                    b.Property<int>("CenterId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CloseAt")
@@ -330,6 +369,16 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasIndex("CenterId");
 
                     b.ToTable("Schedules");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CenterId = 1,
+                            CloseAt = new DateTime(1, 1, 1, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Default",
+                            OpenAt = new DateTime(1, 1, 1, 9, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Staff", b =>
@@ -348,7 +397,10 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("INAMI")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("WorkspaceId")
+                    b.Property<bool>("Responsible")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("WorkspaceId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -358,6 +410,17 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasIndex("WorkspaceId");
 
                     b.ToTable("Staffs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccountId = 1,
+                            Grade = 0,
+                            INAMI = "1454548478794692",
+                            Responsible = true,
+                            WorkspaceId = 1
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Vaccin", b =>
@@ -382,6 +445,26 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasIndex("ProviderId");
 
                     b.ToTable("Vaccins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Pfizer",
+                            ProviderId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Moderna",
+                            ProviderId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Aztrazeneka",
+                            ProviderId = 2
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.VaccinInfo", b =>
@@ -391,7 +474,7 @@ namespace VaccineCenter.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CenterId")
+                    b.Property<int>("CenterId")
                         .HasColumnType("int");
 
                     b.Property<long>("QuantityAvailable")
@@ -407,6 +490,29 @@ namespace VaccineCenter.DAL.Migrations
                     b.HasIndex("VaccinId");
 
                     b.ToTable("VaccinInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CenterId = 1,
+                            QuantityAvailable = 0L,
+                            VaccinId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CenterId = 1,
+                            QuantityAvailable = 0L,
+                            VaccinId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CenterId = 1,
+                            QuantityAvailable = 0L,
+                            VaccinId = 3
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Workspace", b =>
@@ -419,22 +525,26 @@ namespace VaccineCenter.DAL.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CenterId")
+                    b.Property<int>("CenterId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResponsibleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CenterId");
 
-                    b.HasIndex("ResponsibleId");
-
                     b.ToTable("Workspaces");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Rue des flocons, 6, 6200, Chaleroi",
+                            CenterId = 1,
+                            Name = "Default"
+                        });
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Account", b =>
@@ -456,15 +566,7 @@ namespace VaccineCenter.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.DAL.Model.Staff", "Responsible")
-                        .WithMany()
-                        .HasForeignKey("ResponsibleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("InActivity");
-
-                    b.Navigation("Responsible");
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.InjectionTaken", b =>
@@ -572,7 +674,9 @@ namespace VaccineCenter.DAL.Migrations
                 {
                     b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
                         .WithMany("Schedule")
-                        .HasForeignKey("CenterId");
+                        .HasForeignKey("CenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Center");
                 });
@@ -585,11 +689,15 @@ namespace VaccineCenter.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VaccineCenter.DAL.Model.Workspace", null)
+                    b.HasOne("VaccineCenter.DAL.Model.Workspace", "Workspace")
                         .WithMany("Staffs")
-                        .HasForeignKey("WorkspaceId");
+                        .HasForeignKey("WorkspaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
+
+                    b.Navigation("Workspace");
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Vaccin", b =>
@@ -605,9 +713,11 @@ namespace VaccineCenter.DAL.Migrations
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.VaccinInfo", b =>
                 {
-                    b.HasOne("VaccineCenter.DAL.Model.Center", null)
+                    b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
                         .WithMany("Vaccin")
-                        .HasForeignKey("CenterId");
+                        .HasForeignKey("CenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("VaccineCenter.DAL.Model.Vaccin", "Vaccin")
                         .WithMany()
@@ -615,22 +725,20 @@ namespace VaccineCenter.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Center");
+
                     b.Navigation("Vaccin");
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.Workspace", b =>
                 {
-                    b.HasOne("VaccineCenter.DAL.Model.Center", null)
+                    b.HasOne("VaccineCenter.DAL.Model.Center", "Center")
                         .WithMany("Workspace")
-                        .HasForeignKey("CenterId");
-
-                    b.HasOne("VaccineCenter.DAL.Model.Staff", "Responsible")
-                        .WithMany()
-                        .HasForeignKey("ResponsibleId")
+                        .HasForeignKey("CenterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Responsible");
+                    b.Navigation("Center");
                 });
 
             modelBuilder.Entity("VaccineCenter.DAL.Model.AccountType", b =>

@@ -41,6 +41,12 @@ namespace VaccineCenter.ASP
             services.AddScoped<IIntService<Account,AccountModel,AccountForm>, AccountService>();
             services.AddScoped<IIntService<AccountType,AccountTypeModel, AccountTypeForm>, AccountTypeService>();
             services.AddScoped<IIntService<Staff,StaffModel, StaffForm>, StaffService>();
+            services.AddScoped<IIntService<InActivity, InActivityModel, InActivityForm>, InActivityService>();
+            services.AddScoped<IIntService<Center, CenterModel, CenterForm>, CenterService>();
+            services.AddScoped<IIntService<Log, LogModel, LogForm>, LogService>();
+            services.AddScoped<IIntService<Lot, LotModel, LotForm>, LotService>();
+            services.AddScoped<IIntService<Workspace, WorkspaceModel, WorkspaceForm>, WorkspaceService>();
+            services.AddScoped<IIntService<VaccinInfo, VaccinInfoModel, VaccinInfoForm>, VaccinInfoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

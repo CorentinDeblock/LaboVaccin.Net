@@ -878,7 +878,6 @@ D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Pages\Sha
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
-D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Account\Create.cshtml.g.cs
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Account\Delete.cshtml.g.cs
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Account\Details.cshtml.g.cs
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Account\Index.cshtml.g.cs
@@ -898,4 +897,9 @@ D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\VaccineCenter.A
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\ref\VaccineCenter.ASP.dll
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\VaccineCenter.ASP.pdb
 D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\VaccineCenter.ASP.genruntimeconfig.cache
-D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Staff\Create.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Staff\Login.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Staff\MyAccount.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Center\Create.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Log\Index.cshtml.g.cs
+D:\source\repos\VaccineCenter\VaccineCenter.ASP\obj\Debug\net5.0\Razor\Views\Log\Create.cshtml.g.cs

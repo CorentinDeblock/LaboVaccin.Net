@@ -21,8 +21,16 @@ namespace VaccineCenter.Services
         protected override AccountModel MapEntityToModel(Account target,CRUDAction action)
         {
             AccountModel account = base.MapEntityToModel(target);
-            account.AccountType = AccountTypeMapper.MapEntityToModel(target.AccountType);
+            if(target.AccountType != null)
+                account.AccountType = AccountTypeMapper.MapEntityToModel(target.AccountType);
             return account;
+        }
+
+        protected override Account MapModelToEntity(AccountModel model, CRUDAction action = CRUDAction.Conversion)
+        {
+            Account entity = base.MapModelToEntity(model, action);
+            entity.AccountType = AccountTypeMapper.MapModelToEntity(model.AccountType);
+            return entity;
         }
 
         protected override DbSet<Account> GetDbSet(DataContext dc) => dc.Accounts;

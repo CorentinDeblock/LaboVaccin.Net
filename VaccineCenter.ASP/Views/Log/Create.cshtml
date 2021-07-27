@@ -1,0 +1,85 @@
+﻿@model VaccineCenter.Models.Form.LogForm
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>LogForm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogType" class="control-label"></label>
+                <select asp-for="LogType" class="form-control" asp-items="@Html.GetEnumSelectList<LogType>()">
+                </select>
+                <span asp-validation-for="LogType" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input id="ReferenceVaccin" class="form-check-input" asp-for="ReferenceVaccin" /> @Html.DisplayNameFor(model => model.ReferenceVaccin)
+                </label>
+            </div>
+            <div id="Lot" hidden>
+                <div class="form-group">
+                    <label asp-for="LotID" class="control-label"></label>
+                    <input asp-for="LotID" class="form-control" />
+                    <span asp-validation-for="LotID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VaccinInfoId" class="control-label"></label>
+                    <select asp-for="VaccinInfoId" class="form-control">
+                        @foreach(VaccinInfoModel vaccinInfoModel in Model.vaccinModels)
+                        {
+                            <option value="@vaccinInfoModel.Id">@vaccinInfoModel.Vaccin.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="VaccinInfoId" class="text-danger"></span>
+                </div>
+                <div hidden>
+                    <label asp-for="CenterId" class="control-label"></label>
+                    <input asp-for="CenterId" class="form-control" />
+                    <span asp-validation-for="CenterId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    const VaccinReferenceElement = document.getElementById("ReferenceVaccin")
+    const LotElement = document.getElementById("Lot")
+
+    console.log(LotElement, VaccinReferenceElement)
+
+    VaccinReferenceElement.addEventListener("change", () => {
+        if (VaccinReferenceElement.checked)
+            LotElement.removeAttribute("hidden")
+        else
+            LotElement.setAttribute("hidden","")
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

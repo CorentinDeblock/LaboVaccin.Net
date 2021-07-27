@@ -1,0 +1,29 @@
+﻿@model VaccineCenter.Models.StaffModel
+
+@{
+    CenterModel center = Model.Workspace.Center;
+    StaffModel responsable = center.Responsible;
+    AccountModel accountResponsable = responsable.Account;
+
+    ViewData["Title"] = "MyAccount";
+}
+
+<h2>Mon compte</h2>
+
+<div>
+    <hr />
+    <div class="d-flex">
+        <h4>@Model.Account.FirstName @Model.Account.LastName</h4>
+        <div class="my-auto ml-2">
+            <span class="badge badge-secondary">@Model.Grade</span>
+        </div>
+    </div>
+
+    <p>@Model.Account.Email</p>
+ 
+    @if (Model.INAMI != "")
+    {
+        <p>@Model.INAMI</p>
+    }
+
+</div>

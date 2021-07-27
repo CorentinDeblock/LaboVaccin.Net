@@ -13,7 +13,9 @@ namespace VaccineCenter.DAL.Model
         public uint QuantityAvailable { get; set; }
 
         public int VaccinId { get; set; }
+        public int CenterId { get; set; }
 
+        public Center Center { get; set; }
         public Vaccin Vaccin { get; set; }
         public List<Log> Logs { get; set; }
     }

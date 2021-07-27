@@ -16,7 +16,9 @@ namespace VaccineCenter.Services.Mapper
                 Id = entity.Id,
                 Grade = entity.Grade,
                 INAMI = entity.INAMI,
+                Responsible = entity.Responsible,
                 AccountId = entity.AccountId,
+                
                 Account = Mapper.MapEntityToModel(entity.Account)
             };
         }
@@ -27,7 +29,8 @@ namespace VaccineCenter.Services.Mapper
             {
                 Grade = form.Grade,
                 INAMI = form.INAMI,
-                AccountId = form.AccountId
+                AccountId = form.AccountId,
+                WorkspaceId = form.WorkspaceId
             };
         }
 
@@ -38,8 +41,9 @@ namespace VaccineCenter.Services.Mapper
                 Id = model.Id,
                 Grade = model.Grade,
                 INAMI = model.INAMI,
+                Responsible = model.Responsible,
                 AccountId = model.AccountId,
-                Account = new AccountMapper().MapModelToEntity(model.Account)
+                Account = Mapper.MapModelToEntity(model.Account)
             };
         }
 
@@ -49,7 +53,8 @@ namespace VaccineCenter.Services.Mapper
             {
                 Grade = model.Grade,
                 INAMI = model.INAMI,
-                AccountId = model.AccountId
+                AccountId = model.AccountId,
+                WorkspaceId = model.WorkspaceId
             };
         }
     }

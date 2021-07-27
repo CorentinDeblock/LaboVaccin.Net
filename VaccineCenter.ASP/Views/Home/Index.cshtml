@@ -1,8 +1,87 @@
-﻿@{
+﻿@model VaccineCenter.Models.StaffModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (Model == null)
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenue sur VaccineCenter</h1>
+        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+        <p>Pour voir votre centre. Veuillez vous @Html.ActionLink("Connectez", "Login", "Staff") ou vous @Html.ActionLink("Inscrire", "Create", "Staff")</p>
+    </div>
+}
+else
+{
+    CenterModel center = Model.Workspace.Center;
+    StaffModel responsable = center.Responsible;
+    AccountModel accountResponsable = responsable.Account;
+
+    <h2>Mon centre</h2>
+    <div class="border-dark bg-dark text-light p-3 rounded">
+        <div class="d-flex">
+            <h3 class="text-info m-0">@center.Name</h3>
+            <span class="ml-2 mt-auto font-weight-bold">
+                dont le responsable est @accountResponsable.FirstName @accountResponsable.LastName
+                <span class="badge badge-secondary">@responsable.Grade</span>
+            </span>
+        </div>
+        <p class="m-0">En activité du @center.InActivity.Opening.ToString("dd/MM/yyyy") jusqu'au @center.InActivity.Closing.ToString("dd/MM/yyyy")</p>
+        @foreach (ScheduleModel sm in center.Schedule)
+        {
+            if (sm.Name == "Default")
+            {
+
+                <p class="m-0">Ouvert de @sm.OpenAt.ToString("HH:mm") a @sm.CloseAt.ToString("HH:mm")</p>
+            }
+            else
+            {
+                <p class="m-0">Sauf le @sm.Name du @sm.OpenAt.ToString("HH:mm") a @sm.CloseAt.ToString("HH:mm")</p>
+            }
+        }
+        <div class="d-flex">
+            @foreach (VaccinInfoModel vaccinInfoModel in center.Vaccin)
+            {
+                <div class="d-flex mr-2">
+                    <a class="m-0">@vaccinInfoModel.Vaccin.Name</a>
+                    <span class="my-auto ml-1 badge badge-info">@vaccinInfoModel.QuantityAvailable</span>
+                </div>
+            }
+        </div>
+        <div class="mt-3">
+            <h3 class="m-0 text-info">Staffs</h3>
+            @foreach (StaffModel staffModel in center.Workspace[0].Staffs)
+            {
+                <div class="p-2 mt-2 bg-white text-dark">
+                    <h4>@staffModel.Account.FirstName @staffModel.Account.LastName <span class="badge badge-secondary">@staffModel.Grade</span></h4>
+                </div>
+            }
+        </div>
+        <div class="mt-3 d-flex">
+            <h3 class="m-0 text-info">Logs</h3>
+            @Html.ActionLink("Ajouter un log", "Create", "Log", new { CenterId = center.Id }, new { @class = "btn btn-info ml-2" })
+        </div>
+        <div>
+            @foreach (LogModel logModel in center.Log)
+            {
+                string type = "";
+                <div class="p-2 mt-2 bg-white text-dark">
+                    @if (logModel.Quantity > 0)
+                    {
+                        <div class="d-flex">
+                            @if (logModel.LogType == LogType.In)
+                                type = "Entrée";
+                            else
+                                type = "Sortie";
+                            <span class="my-auto mr-1 badge badge-info">@logModel.Lot.LotId</span>
+                            <h5 class="m-0">@type de @logModel.Quantity @logModel.VaccinInfo.Vaccin.Name</h5>
+                        </div>
+                    }
+                    <p class="m-0">@logModel.Description</p>
+                    <p class="m-0">Le @logModel.Date.ToString("dd/MM/yyyy") a @logModel.Date.ToString("HH:mm")</p>
+                </div>
+            }
+        </div>
+    </div>
+}

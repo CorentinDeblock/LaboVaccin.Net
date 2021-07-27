@@ -11,9 +11,9 @@ namespace VaccineCenter.DAL.Model
     {
         [Key]
         public int Id { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Address { get; set; }
-        public byte[] NationalRegistrationNumber { get; set; }
+        public string NationalRegistrationNumber { get; set; }
         public string MedicationIndications { get; set; }
 
         public int AccountId { get; set; }

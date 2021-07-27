@@ -13,7 +13,7 @@ namespace VaccineCenter.Services.Mapper
             {
                 Id = target.Id,
                 IsStaff = target.IsStaff,
-                IsPatient = target.IsPatient
+                IsPatient = target.IsPatient,
             };
         }
 
@@ -30,10 +30,12 @@ namespace VaccineCenter.Services.Mapper
         {
             return new AccountType
             {
+                Id = model.Id,
                 IsPatient = model.IsPatient,
-                IsStaff = model.IsStaff
+                IsStaff = model.IsStaff,
             };
         }
+
 
         public AccountTypeForm MapModelToForm(AccountTypeModel model)
         {

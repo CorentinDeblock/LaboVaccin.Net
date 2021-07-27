@@ -1,10 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using VaccineCenter.DAL.Configuration;
+using VaccineCenter.DAL.Generator;
 using VaccineCenter.DAL.Model;
 
 namespace VaccineCenter
@@ -20,6 +25,8 @@ namespace VaccineCenter
 
     public class DataContext : DbContext
     {
+        private ModelBuilder ModelBuilder { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -36,13 +43,84 @@ namespace VaccineCenter
         {
             base.OnModelCreating(modelBuilder);
 
+            ModelBuilder = modelBuilder;
+
+            Generator.builder = modelBuilder;
+
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
             modelBuilder.ApplyConfiguration(new VaccinConfiguration());
             modelBuilder.ApplyConfiguration(new InActivityConfiguration());
             modelBuilder.ApplyConfiguration(new PlanificationConfiguration());
             modelBuilder.ApplyConfiguration(new PatientConfiguration());
             modelBuilder.ApplyConfiguration(new LogsConfiguration());
+            modelBuilder.ApplyConfiguration(new WorkspaceConfiguration());
+
+            Vaccin VaccinFirst = new Vaccin { Id = 1, Name = "Pfizer" };
+            Vaccin VaccinSecond = new Vaccin { Id = 2, Name = "Moderna" };
+            Vaccin VaccinThird = new Vaccin { Id = 3, Name = "Aztrazeneka" };
+
+            Staff staff = Generator.GenerateStaff(
+                1,
+                1,
+                "roger@gmail.com",
+                "roger",
+                "Roger",
+                "LaMontagne",
+                DAL.Enum.StaffGrade.Doctor,
+                "1454548478794692"
+            );
+
+            GenerateVaccin(new Provider
+            {
+                Id = 1,
+                Address = "Rue de la montagne, 6",
+                Name = "Biontech"
+            }, VaccinFirst, VaccinSecond);
+
+            GenerateVaccin(new Provider
+            {
+                Id = 2,
+                Address = "Rue de saint pagne, 89",
+                Name = "Johnson & Johnson"
+            }, VaccinThird);
+
+            Center center = new Center
+            {
+                Id = 1,
+                Address = "Rue des flocons, 6, 6200, Chaleroi",
+                Name = "Vaccine toi",
+                InActivityId = Generator.GenerateInActivity(1,DateTime.Now, DateTime.Now.AddYears(1)).Id
+            };
+
+            GenerateCenter(center);
+            Generator.GenerateWorkspace(1, staff, center, "Default", center.Address);
+
+            Generator.GenerateVaccinInfo(1, VaccinFirst, center);
+            Generator.GenerateVaccinInfo(2, VaccinSecond, center);
+            Generator.GenerateVaccinInfo(3, VaccinThird, center);
+
+            Generator.GenerateSchedule(1,center, 9, 18);
         }
+
+        private void GenerateCenter(params Center[] center)
+        {
+            foreach(Center c in center)
+            {
+                ModelBuilder.Entity<Center>().HasData(c);
+            }
+        }
+
+        private void GenerateVaccin(Provider provider, params Vaccin[] vaccin)
+        {
+            ModelBuilder.Entity<Provider>().HasData(provider);
+
+            foreach (Vaccin v in vaccin)
+            {
+                v.ProviderId = provider.Id;
+                ModelBuilder.Entity<Vaccin>().HasData(v);
+            }
+        }
+
         public DbSet<Communication> Communications { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
